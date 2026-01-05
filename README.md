@@ -24,9 +24,19 @@ An automatic file organizer that sorts files into categorized folders (Documents
 - Safe to run multiple times
 - Beginner-friendly with clear documentation
 
+### 3. [folder-disk_usage-bash](./folder-disk_usage-bash/)
+A disk space monitoring script that checks filesystem usage, logs results, and alerts when usage exceeds a configurable threshold.
+
+**Features:**
+- Real-time disk usage monitoring across all filesystems
+- Configurable warning thresholds (default: 80%)
+- Detailed logging with timestamps
+- Automated alerts for high usage
+- Lightweight with no dependencies
+
 ---
 
-## 🎯 Why Bash?
+## Why Bash?
 
 I create Bash scripts because they're:
 - **Portable:** Run on virtually any Unix-like system
@@ -55,6 +65,14 @@ chmod +x folder-name/script-name.sh
 ./folder-name/script-name.sh
 ```
 
+### Example: Disk Usage Monitor
+```bash
+cd folder-disk_usage-bash
+chmod +x disk_usage.sh
+./disk_usage.sh
+# Check log file: cat ~/Documents/disk_usage.txt
+```
+
 ---
 
 ## 📝 Script Development Philosophy
@@ -71,13 +89,15 @@ Each script follows these principles:
 ## 🛠️ Common Bash Features Used
 
 These scripts demonstrate various Bash programming concepts:
-- Command-line arguments handling (`$1`, `$2`)
-- Conditional statements (`if`, `case`)
-- Loops (`for`, `while`)
-- Functions and modularity
-- Exit codes and error handling
-- File operations and permissions
-- Date and string manipulation
+- **Command-line arguments:** `$1`, `$2`, `shift`
+- **Conditional statements:** `if`, `case`, `test`
+- **Loops:** `for`, `while`, `until`
+- **Text processing:** `awk`, `sed`, `grep`
+- **System commands:** `df`, `rsync`, `find`, `mkdir`
+- **Error handling:** Exit codes, `trap`, `set -e`
+- **File operations:** Permissions, redirection, piping
+- **String manipulation:** Variable expansion, pattern matching
+- **Date and time:** `date` command formatting
 
 ---
 
@@ -86,28 +106,40 @@ These scripts demonstrate various Bash programming concepts:
 - **Bash** (version 4.0+ recommended)
 - **Linux/macOS** environment
 - Basic command-line knowledge
+- Standard Unix tools (rsync, awk, df - all usually pre-installed)
 
 All scripts use standard Unix tools that come pre-installed on most systems.
 
 ---
 
-## 📚 Learning Resources
+## 🤖 Script Synergy
 
-If you're new to Bash scripting, check out:
-- [Bash Guide for Beginners](https://tldp.org/LDP/Bash-Beginners-Guide/html/)
-- [Google's Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
-- [ShellCheck](https://www.shellcheck.net/) - For linting and debugging
+These scripts work well together:
+
+1. **Monitor → Backup:** Use disk usage script before backups to ensure enough space
+2. **Organize → Backup:** Keep files organized before backing them up
+3. **Schedule All:** Use cron to schedule all three scripts for full automation
+
+Example automation workflow:
+```bash
+# Daily cron job example
+0 2 * * * /path/to/disk_usage.sh          # Check disk space at 2 AM
+0 3 * * * /path/to/organizer.sh ~/Downloads # Organize downloads at 3 AM  
+0 4 * * * /path/to/backup.sh              # Run backup at 4 AM
+```
 
 ---
 
 ## 🗺️ Future Projects
 
 Scripts I plan to add:
-- System monitoring and alerts
-- Automated software installation
+- System monitoring dashboard
+- Automated software installation/updates
 - Log file analysis and rotation
-- Network utilities
+- Network utilities (ping sweeper, port scanner)
 - Development environment setup
+- File integrity checker
+- Process monitoring and management
 
 ---
 
@@ -117,21 +149,7 @@ While this is primarily a personal collection, suggestions and improvements are 
 - Report bugs or issues
 - Suggest new script ideas
 - Share your own Bash scripting tips
-
----
-
-## 📊 Repository Structure
-```
-bash-folder/
-├── folder-backup-bash/
-│   ├── backup.sh
-│   └── README.md
-├── folder-organizer-bash/
-│   ├── organizer.sh
-│   ├── README.md
-│   └── test_folder/
-└── README.md  (this file)
-```
+- Fork and adapt for your own needs
 
 ---
 
@@ -148,4 +166,6 @@ I'm Jaafar Trabelsi, exploring system automation through Bash scripting. These p
 All scripts are provided as-is for educational and personal use. Feel free to modify and adapt them for your own needs.
 
 ---
+
+
 
