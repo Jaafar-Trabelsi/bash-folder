@@ -98,12 +98,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📊 Project Stats
-
-![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/password-strength-checker)
-![GitHub stars](https://img.shields.io/github/stars/yourusername/password-strength-checker?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/password-strength-checker?style=social)
-
----
-
-*Created with ❤️ for developers learning Bash scripting and security fundamentals*
