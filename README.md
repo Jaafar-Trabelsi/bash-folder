@@ -1,3 +1,8 @@
+# Update the README with the new system info script and password checker
+
+Perfect! Let's add the two new projects to your main README.md. Here's the updated version:
+
+```markdown
 # Bash Script Projects Collection 
 
 A personal collection of practical Bash scripts I've created to automate tasks, organize files, and improve workflow efficiency. Each project is standalone, well-documented, and ready to use.
@@ -34,6 +39,42 @@ A disk space monitoring script that checks filesystem usage, logs results, and a
 - Automated alerts for high usage
 - Lightweight with no dependencies
 
+### 4. [folder-pswd_checker-bash](./folder-pswd_checker-bash/)
+A password strength checker that evaluates passwords based on multiple security criteria with silent input and immediate feedback.
+
+**Features:**
+- Silent password input (characters not displayed)
+- Multi-factor scoring system
+- Clear strength ratings (Very Weak → Strong)
+- Lightweight with no dependencies
+- Educational with well-commented code
+
+**Scoring Criteria:**
+- Length ≥ 8 characters (+2 points)
+- Contains lowercase letters (+1 point)
+- Contains uppercase letters (+1 point)
+- Contains numbers (+1 point)
+- Contains special characters (+2 points)
+- **Maximum Score: 7 points**
+
+### 5. [folder-user_sys_info-bash](./folder-user_sys_info-bash/)
+A system information script that displays essential computer details in a clean, easy-to-read format.
+
+**Features:**
+- Instant system snapshot with one command
+- Clean, formatted output
+- No dependencies beyond built-in commands
+- Beginner-friendly code
+- Cross-platform compatibility (Linux, macOS, WSL)
+
+**Information Displayed:**
+- User identity and computer name
+- Operating system and kernel version
+- System uptime and CPU cores
+- IP addresses and network info
+- Memory and disk usage
+- Current date and time
+
 ---
 
 ## Why Bash?
@@ -65,10 +106,18 @@ chmod +x folder-name/script-name.sh
 ./folder-name/script-name.sh
 ```
 
-### Example: Disk Usage Monitor
+### Examples:
 ```bash
+# Check system information
+cd folder-user_sys_info-bash
+./user_sys_info.sh
+
+# Test password strength
+cd folder-pswd_checker-bash
+./pswd_checker.sh
+
+# Monitor disk usage
 cd folder-disk_usage-bash
-chmod +x disk_usage.sh
 ./disk_usage.sh
 # Check log file: cat ~/Documents/disk_usage.txt
 ```
@@ -98,6 +147,8 @@ These scripts demonstrate various Bash programming concepts:
 - **File operations:** Permissions, redirection, piping
 - **String manipulation:** Variable expansion, pattern matching
 - **Date and time:** `date` command formatting
+- **Regular expressions:** Pattern matching for validation
+- **Secure input:** Silent password prompts with `read -sp`
 
 ---
 
@@ -112,20 +163,63 @@ All scripts use standard Unix tools that come pre-installed on most systems.
 
 ---
 
+## 🏗️ Project Structure
+
+```
+bash-folder/
+├── README.md                          # This main documentation
+├── folder-backup-bash/
+│   ├── README.md
+│   └── backup.sh
+├── folder-organizer-bash/
+│   ├── README.md
+│   └── organizer.sh
+├── folder-disk_usage-bash/
+│   ├── README.md
+│   └── disk_usage.sh
+├── folder-pswd_checker-bash/
+│   ├── README.md
+│   └── pswd_checker.sh
+└── folder-user_sys_info-bash/
+    ├── README.md
+    └── user_sys_info.sh
+```
+
+Each project folder contains:
+- **README.md**: Detailed documentation and usage instructions
+- **script.sh**: The main executable Bash script
+
+---
+
 ## 🤖 Script Synergy
 
 These scripts work well together:
 
-1. **Monitor → Backup:** Use disk usage script before backups to ensure enough space
-2. **Organize → Backup:** Keep files organized before backing them up
-3. **Schedule All:** Use cron to schedule all three scripts for full automation
+### Security & System Management:
+1. **Password Check → System Info**: Check password strength on new systems you're configuring
+2. **System Info → Disk Usage**: Get full system overview before disk maintenance
+3. **Disk Usage → Backup**: Monitor space before running backups
 
-Example automation workflow:
+### Daily Workflow:
 ```bash
-# Daily cron job example
-0 2 * * * /path/to/disk_usage.sh          # Check disk space at 2 AM
-0 3 * * * /path/to/organizer.sh ~/Downloads # Organize downloads at 3 AM  
-0 4 * * * /path/to/backup.sh              # Run backup at 4 AM
+# Morning system check
+./folder-user_sys_info-bash/user_sys_info.sh
+./folder-disk_usage-bash/disk_usage.sh
+
+# File organization
+./folder-organizer-bash/organizer.sh ~/Downloads
+
+# Evening backup
+./folder-backup-bash/backup.sh
+```
+
+### Automation Example:
+```bash
+# Daily cron job automation
+0 9 * * * /path/to/folder-user_sys_info-bash/user_sys_info.sh >> ~/system_log.txt  # Morning system check
+0 18 * * * /path/to/folder-organizer-bash/organizer.sh ~/Downloads                # Organize downloads
+0 20 * * * /path/to/folder-disk_usage-bash/disk_usage.sh                          # Check disk space
+0 22 * * * /path/to/folder-backup-bash/backup.sh                                  # Nightly backup
 ```
 
 ---
@@ -133,13 +227,33 @@ Example automation workflow:
 ## 🗺️ Future Projects
 
 Scripts I plan to add:
-- System monitoring dashboard
-- Automated software installation/updates
-- Log file analysis and rotation
-- Network utilities (ping sweeper, port scanner)
-- Development environment setup
-- File integrity checker
-- Process monitoring and management
+- **System monitoring dashboard** - Real-time system metrics display
+- **Automated software installation/updates** - Package management automation
+- **Log file analysis and rotation** - Log management utilities
+- **Network utilities** - Ping sweeper, port scanner, connection monitor
+- **Development environment setup** - One-click dev environment configuration
+- **File integrity checker** - Checksum verification and monitoring
+- **Process monitoring and management** - System process oversight
+- **Automated report generator** - System health reports
+- **SSH connection manager** - Simplify remote server management
+- **System cleanup utility** - Remove temporary files and free space
+
+---
+
+## 🎯 Learning Path
+
+These scripts are organized from simple to more complex:
+
+1. **Beginner Level** (Start here if new to Bash):
+   - `folder-user_sys_info-bash` - Basic system commands
+   - `folder-pswd_checker-bash` - Input handling and conditions
+
+2. **Intermediate Level**:
+   - `folder-organizer-bash` - File operations and loops
+   - `folder-disk_usage-bash` - System monitoring and logging
+
+3. **Advanced Level**:
+   - `folder-backup-bash` - Advanced file operations and error handling
 
 ---
 
@@ -166,6 +280,12 @@ I'm Jaafar Trabelsi, exploring system automation through Bash scripting. These p
 All scripts are provided as-is for educational and personal use. Feel free to modify and adapt them for your own needs.
 
 ---
+
+## 📊 Project Status
+
+![GitHub last commit](https://img.shields.io/github/last-commit/Jaafar-Trabelsi/bash-folder)
+![GitHub repo size](https://img.shields.io/github/repo-size/Jaafar-Trabelsi/bash-folder)
+![GitHub](https://img.shields.io/github/license/Jaafar-Trabelsi/bash-folder)
 
 
 
