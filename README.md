@@ -1,8 +1,3 @@
-# Update the README with the new system info script and password checker
-
-Perfect! Let's add the two new projects to your main README.md. Here's the updated version:
-
-```markdown
 # Bash Script Projects Collection 
 
 A personal collection of practical Bash scripts I've created to automate tasks, organize files, and improve workflow efficiency. Each project is standalone, well-documented, and ready to use.
